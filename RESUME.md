@@ -1,0 +1,1 @@
+[이력서 링크](https://www.notion.so/zhenxispace/3ab2482b603b4df98f8a17120cc9152b).
