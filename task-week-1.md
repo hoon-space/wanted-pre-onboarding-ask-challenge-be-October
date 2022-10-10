@@ -7,6 +7,9 @@
 
 Spring에서는 이 격리 레벨을 의미하는 Isolation Enum이 있고 `@Transactional` 어노테이션의 속성으로 지정하여 사용할 수 있습니다.
 
+<div align="center">
+  <img src="/img/isolation.png">
+</div>
 
 ### 1. DEFAULT
 
@@ -69,6 +72,10 @@ Reflection을 이용하지 않습니다. 따라서 JDK Dynamic Proxy에 비해 �
 ```
 
 ### @Transactional의 동작 과정
+
+<div align="center">
+  <img src="/img/transaction_process.png">
+</div>
 
 - Caller에서 Proxy를 호출합니다. 이 때 Target은 호출하지 않습니다.
 - AOP Proxy가 Transaction Advisor를 호출합니다. 이때 COMMIT / ROLLBACK이 수행됩니다.
