@@ -5,7 +5,7 @@
 여러 개의 트랜잭션이 동시에 수행될 때, 트랜잭션끼리의 고립 수준을 나타내는 정도입니다.                       
 특정 트랜잭션이 다른 트랜잭션에서 변경한 데이터를 어느정도까지 볼 수 있도록 허용할지 설정할 수 있습니다.                     
 
-Spring에서는 이 격리 레벨을 의미하는 Isolation Enum이 있고 @Transactional 어노테이션의 속성으로 지정하여 사용할 수 있습니다.
+Spring에서는 이 격리 레벨을 의미하는 Isolation Enum이 있고 `@Transactional` 어노테이션의 속성으로 지정하여 사용할 수 있습니다.
 
 
 ### 1. DEFAULT
@@ -34,7 +34,7 @@ Spring에서는 이 격리 레벨을 의미하는 Isolation Enum이 있고 @Tran
 - 테이블의 같은 행에 대해 두 가지 이상 다른 행위를 하는 트랜잭션들이 있을 때,
   한번 읽은 행은 반복적으로 조회를 시도하여도 다른 트랜잭션의 변경 결과를 읽어오지 않습니다.
   즉, 트랜잭션이 시작되기 전 커밋된 내용에 대해서만 조회할 수 있습니다.
-- 새로운 행을 추가하는 것에 대해서는 따로 제한을 두지 않아서, 전체 행을 조회할 경우 새롭게 추가된 행이 나타날 수 있습니다.
+- 데이터를 추가하는 것에 대해서는 따로 제한을 두지 않아서, 새롭게 추가된 행이 나타날 수 있습니다.(Phantom read)
 ```
 
 ### 5. SERIALIZABLE
@@ -47,4 +47,31 @@ Spring에서는 이 격리 레벨을 의미하는 Isolation Enum이 있고 @Tran
 
 ## 2. Spring에서의 Transaction 동작 원리
 
+Spring에서 트랜잭션 처리를 위해 제공하는 `@Transactional` 어노테이션은 Spring AOP를 사용합니다.                 
+Spring AOP는 기본적으로 Proxy 기반으로 동작합니다.
 
+> proxy : 대리(행위)나 대리권, 대리 투표, 대리인 등을 의미
+
+proxy란, 어떤 객체에 접근할 때, 객체를 직접 참조하는 것이 아닌, 해당 객체를 대행하는 proxy 객체를 통해 접근하는 방식을 의미합니다.                
+Spring AOP는 `JDK Dynamic Proxy`(Spring의 default)와 `CGLib Proxy`(Spring Boot의 default)를 제공합니다.                
+
+**JDK Dynamic Proxy**
+```
+Java Reflection API를 통해 생성된 Proxy객체를 의미합니다.
+java.lang.reflect.Proxy 클래스가 동적으로 Proxy객체를 생성해 줍니다.
+Target의 인터페이스를 기준으로 생성하기 때문에, 상위 인터페이스가 존재해야 합니다.
+```
+
+**CGLib Proxy**
+```
+Reflection을 이용하지 않습니다. 따라서 JDK Dynamic Proxy에 비해 성능 상 이점이 있습니다.
+상속을 통해 Proxy화할 메소드를 오버라이딩 합니다.
+```
+
+### @Transactional의 동작 과정
+
+- Caller에서 Proxy를 호출합니다. 이 때 Target은 호출하지 않습니다.
+- AOP Proxy가 Transaction Advisor를 호출합니다. 이때 COMMIT / ROLLBACK이 수행됩니다.
+- Custom Advisor가 있다면, Transaction Advisor 실행 전/후에 Custom interceptor가 실행됩니다.
+- Custom Advisor가 Target메소드를 호출하고, 비즈니스 로직이 수행됩니다.
+- 결과를 순서대로 리턴합니다.
