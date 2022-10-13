@@ -6,4 +6,4 @@
 
 Issue 탭에 자유롭게 글 작성하신 후 알맞은 Label을 달아주세요.
 
-Happy Coding!
+Happy Coding! 
