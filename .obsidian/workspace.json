@@ -30,9 +30,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "d25ff495dc70fe98",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1주차 과제 ORM별 트랜잭션 처리 방법.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1주차 과제 트랜잭션 격리레벨.md",
+                "file": "1주차 과제 ORM별 트랜잭션 처리 방법.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1주차 과제 트랜잭션 격리레벨.md",
+                "file": "1주차 과제 ORM별 트랜잭션 처리 방법.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "1주차 과제 트랜잭션 격리레벨.md"
+                "file": "1주차 과제 ORM별 트랜잭션 처리 방법.md"
               }
             }
           }
@@ -152,8 +164,9 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "df4c53a4f92e59a7",
+  "active": "d25ff495dc70fe98",
   "lastOpenFiles": [
+    "1주차 과제 트랜잭션 격리레벨.md",
     "README.md"
   ]
 }
