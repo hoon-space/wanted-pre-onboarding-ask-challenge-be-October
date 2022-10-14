@@ -1,0 +1,36 @@
+1. 트랜잭션 isolation 레벨
+1)READ UNCOMMITTED
+SELECT 쿼리 실행시에 다른 트랜잭션에서 COMMIT 되지 않은 데이터를 읽어올 수 있다.
+INSERT만 진행되고 ROLLBACK 될 수도 있는 한번도 COMMIT 되지 않은 데이터를 읽을 수 있어 주의가 필요하다.
+
+2)READ COMMITTED
+COMMIT이 완료된 데이터만 SELECT시에 보이는 수준을 보장하는 Level이며 대부분의 DBMS에서 기본으로 설정하고있다.
+Read Committed에서는 Read Uncommitted에서 발생하는 Dirty read가 발생하지 않도록 보장해준다.
+Read Committed의 문제는 하나의 트랜잭션 안에서 SELECT를 수행 할 때마다 데이터가 동일하다는 보장을 해주지 않는다.
+그 이유는 다른 트랜젝션에서 해당 데이터를 COMMIT 했을 경우에는 COMMIT된 데이터를 반환해주는게 Read Committed의 특징이기 때문이다..
+위와 같은 이유로 Read Committed를 Non-repeatable Read 라고도 한다.
+
+3)REPEATABLE READ
+Read Committed와는 다르게 Repeatable Read는 한 트랜잭션 안에서 반복해서 SELECT를 수행하더라도 읽어 들이는 값이 변화하지 않음을 보장한다.
+Repeatable Read 트랜잭션은 처음으로 SELECT을 수행한 시간을 기록한 뒤 그 이후에는 모든 SELECT 마다 해당 시점을 기준으로 Consistent Read를 수행하여준다.
+그러므로 트랜잭션 도중 다른 트랜잭션이 COMMIT 되더라도 새로이 COMMIT 된 데이터는 보이지 않게된다.
+그 이유는 첫 SELECT 시에 생성된 SNAPSHOT을 읽기 때문이다.
+
+4)SERIALIZABLE
+Serializable은 모든 작업을 하나의 트랜젝션에서 처리하는 것과 같은 가장 높은 고립수준을 제공한다.
+Read Committed, Repeatable Read 두개의 공통적인 이슈는 Phantom Read가 발생한다는 점이다.
+
+
+2.Spring framework 에서의 transaction 동작
+
+Spring Configuration에 @EnableTransactionManagement 애노테이션을 붙입니다. (스프링 부트에서는 자동으로 해준다.)
+Spring Configuration에 트랜잭션 매니저를 지정, 스프링은 @Transactional 애노테이션이 달린 public 메서드에 대해서 내부적으로 데이터베이스 트랜잭션 코드를 실행해준다.
+트랜잭션 처리를 위한 @Transactional 애노테이션은 Spring AOP의 대표적인 예이다. 
+@Transactional 역시 Proxy 형태로 동작한다. 
+(Spring은 JDK Proxy, Spring Boot는 CGLIb Proxy를 기본으로 하기 때문에, 사용하는 것에 따라 생성된 프록시 객체 형태는 다를 수 있다.)
+-target에 대한 호출이 들어오면 AOP proxy가 이를 가로채서(intercept) 가져온다.
+-AOP proxy에서 Transaction Advisor가 commit 또는 rollback 등의 트랜잭션 처리를 한다.
+-트랜잭션 처리 외에 다른 부가 기능이 있을 경우 해당 Custom Advisor에서 그 처리를 한다.
+-각 Advisor에서 부가 기능 처리를 마치면 Target Method를 수행한다.
+-interceptor chain을 따라 caller에게 결과를 다시 전달한다.
+
