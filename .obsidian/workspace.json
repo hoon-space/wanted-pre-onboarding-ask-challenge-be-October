@@ -1,0 +1,172 @@
+{
+  "main": {
+    "id": "c15288973cbf86a0",
+    "type": "split",
+    "children": [
+      {
+        "id": "34a711a2ae1ef2f1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8b938aac1cf9b035",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "df4c53a4f92e59a7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1주차 과제 트랜잭션 격리레벨.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d25ff495dc70fe98",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1주차 과제 ORM별 트랜잭션 처리 방법.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "023b1370b781f1d2",
+    "type": "split",
+    "children": [
+      {
+        "id": "45456530f220fcdd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b0333ebb98e782cd",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c3d88f2e900ced9b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9a7a94feaa9ec8f2",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ef43298a989235ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "6ca2a521b5621416",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "68ff5761772ec6d7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "1주차 과제 ORM별 트랜잭션 처리 방법.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "db1643e73f9b51b8",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "1주차 과제 ORM별 트랜잭션 처리 방법.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8e0d01ec1f9915f0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "6eadce249a32c10b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "1주차 과제 ORM별 트랜잭션 처리 방법.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "ribbon": {
+    "mostRecentAction": ""
+  },
+  "active": "d25ff495dc70fe98",
+  "lastOpenFiles": [
+    "1주차 과제 트랜잭션 격리레벨.md",
+    "README.md"
+  ]
+}
