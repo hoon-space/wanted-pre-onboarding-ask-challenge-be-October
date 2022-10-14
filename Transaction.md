@@ -24,6 +24,8 @@
  ### 3. REPEATABLE READ
  * 트랜잭션이 `ROLLBACK`될 가능성에 대하여 전 레코드를 Undo 영역에 백업핻두고 실제 레코드 값을 변경한다.
  * 이러한 변경방식을 MVCC(Multi Version Concurrency Control)라한다.
+ <p align="center"><img src="https://user-images.githubusercontent.com/104122924/195833654-15a6fc8f-1bea-404e-9250-5cdbe3ffb90c.png" width="85%" height="auto"/></p>
+
  * Undo 영역에 백업된 이전 데이터를 통해 통일한 트랜잭션 내에서 동일한 결과를 보여준다.
  * `PHANTOM READ`현상 발생, 한 트랜잭션이 수행중일 때 다른 트랜잭션이 새로운 데이터를 생성함으로써 나타나는 현상이다.
 
