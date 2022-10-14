@@ -33,3 +33,4 @@ Spring Configuration에 트랜잭션 매니저를 지정, 스프링은 @Transact
 -트랜잭션 처리 외에 다른 부가 기능이 있을 경우 해당 Custom Advisor에서 그 처리를 한다.
 -각 Advisor에서 부가 기능 처리를 마치면 Target Method를 수행한다.
 -interceptor chain을 따라 caller에게 결과를 다시 전달한다.
+
